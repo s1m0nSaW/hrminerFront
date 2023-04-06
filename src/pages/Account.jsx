@@ -58,14 +58,15 @@ export const Account = () => {
     };
 
     const deleteApplicant = async (_id) => {
-        await axios.delete(`/applicants/${_id}`).then((data) => {
-            const updatedRows = applicants.filter(row => row._id !== _id);
-            setApplicants(updatedRows);
-            return alert(data.data.success)
-        }).catch((err) => {
-            console.log(err)
-            return alert(err.response.data.message)
-        });
+        if (window.confirm('Вы действительно хотите удалить?')) {
+            await axios.delete(`/applicants/${_id}`).then((data) => {
+                const updatedRows = applicants.filter(row => row._id !== _id);
+                setApplicants(updatedRows);
+            }).catch((err) => {
+                console.log(err)
+                return alert(err.response.data.message)
+            });
+        }
     }
 
     React.useEffect(() => {
@@ -140,8 +141,9 @@ export const Account = () => {
                             </TableHead>
                             <TableBody>
                                 {applicants?.map((applicant, index) => (
-                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant}/>
+                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant} />
                                 ))}
+                                {applicants?.length === 0 && <><TableRow><TableCell /><TableCell><Typography>У вас ещё нет анкет</Typography></TableCell></TableRow></>}
                             </TableBody>
                         </Table>
                     </TableContainer>

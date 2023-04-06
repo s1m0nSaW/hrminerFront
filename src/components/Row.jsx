@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -94,7 +95,7 @@ export default function Row({applicant, handleDeleteRow}) {
                 <TableCell align="right">{applicant.email}</TableCell>
                 <TableCell align="right">{applicant.phone}</TableCell>
                 <TableCell align="right">{applicant.position}</TableCell>
-                <TableCell align="right"><IconButton color="primary"><FileDownloadIcon/></IconButton></TableCell>
+                <TableCell align="right"><Button color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
                 <TableCell align="right"><IconButton onClick={()=>handleDeleteRow(applicant._id)} color="error"><DeleteOutlineIcon/></IconButton></TableCell>
             </TableRow>
             <TableRow>
