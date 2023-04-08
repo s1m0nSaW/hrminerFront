@@ -1,23 +1,25 @@
 import {
     Typography, Grid, Paper, Box, Stack, CircularProgress, Button,
-    Slide, Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions, TextField, Chip, Table, TableContainer, TableCell, TableHead, TableRow, TableBody
+    Slide, Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions, TextField, Chip, Table, TableContainer, TableCell, TableHead, TableRow, TableBody, IconButton
 } from '@mui/material';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setData, selectIsAuth } from '../redux/slices/auth.js';
+import { setData, selectIsAuth, logout } from '../redux/slices/auth.js';
 import axios from '../axios.js';
 import { useForm } from 'react-hook-form';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Row from '../components/Row.jsx';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='left' ref={ref} {...props} />;
 });
 
 export const Account = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [applicants, setApplicants] = React.useState();
     const [open, setOpen] = React.useState(false);
@@ -48,6 +50,18 @@ export const Account = () => {
             dispatch(setData(data.data))
         });
     };
+
+    const deleteAccount = async () => {
+        if (window.confirm('Вы действительно хотите удалить аккаунт?')) {
+            await axios.delete(`/auth/${user._id}`).then(() => {
+                dispatch(logout());
+                window.localStorage.removeItem('token');
+            }).catch((err) => {
+                console.log(err)
+                return alert("Непредвиденная ошибка")
+            });
+        }
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -86,7 +100,13 @@ export const Account = () => {
         <>
             <Grid container spacing={5}>
                 <Grid item xs={12} md={4}>
-                    <Paper elevation={4} sx={{ height: '100%' }}>
+                    <Paper elevation={4} sx={{ position: 'relative', height: '100%' }}>
+                        <IconButton 
+                        sx={{ position: 'absolute', right: '10px', top: '10px' }} 
+                        size="small" 
+                        color="error"
+                        onClick={()=>deleteAccount()}
+                        ><DeleteOutlineIcon/></IconButton>
                         {user &&
                             <Box py={3} px={4}>
                                 <Typography variant='h6' gutterBottom>Информация:</Typography>
