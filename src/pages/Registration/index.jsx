@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
 import styles from './Login.module.scss';
+import { FormControlLabel, Checkbox, Link } from '@mui/material';
 
 export const Registration = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -17,9 +18,10 @@ export const Registration = () => {
 
   const { register, handleSubmit, formState: { errors, isValid }} = useForm({
     defaultValues:{
-      fullName: 'Mother fucker',
-      email: 'test2@mail.ru',
-      password: '123456',
+      fullName: '',
+      email: '',
+      password: '',
+      checkbox: false,
     },
     mode:'onChange',
   });
@@ -69,6 +71,12 @@ export const Registration = () => {
         type='password'
         {...register('password', { required: "Укажите пароль" })}
         fullWidth />
+      <FormControlLabel
+            control={
+              <Checkbox {...register('checkbox', { required: "Ознакомьтесь с политикой конфиденциальности" })} name="checkbox" />
+            }
+            label={<Typography gutterBottom variant='caption'>Принимаю <Link variant="caption" href="/info/privacy">политику конфиденциальности</Link></Typography>}
+          />
       <Button disabled={!isValid} type='submit' size="large" variant="contained" fullWidth>
         Зарегистрироваться
       </Button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from '../axios.js';
 import { useParams,useNavigate } from 'react-router-dom';
-import { Backdrop, Button, CircularProgress, Grid, MenuItem, Paper, Stack, TextField, Typography, ButtonGroup, MobileStepper } from '@mui/material';
+import { Backdrop, Button, CircularProgress, Grid, MenuItem, Paper, Stack, TextField, Typography, ButtonGroup, MobileStepper, FormControlLabel, Checkbox, Link } from '@mui/material';
 import { steps } from '../components/Quiz.jsx';
 
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -16,6 +16,7 @@ export const Test = () => {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [phoneNumber, setPhoneNumber] = React.useState('');
+    const [checkbox, setCheckbox] = React.useState(false)
     
     const [activeStep, setActiveStep] = React.useState(0);
     const [introvert, setIntrovert] = React.useState(0);
@@ -73,7 +74,7 @@ export const Test = () => {
     }
 
     const isFormValid = () => {
-        return !!name && !!email && !!phoneNumber && !!position && person !== '';
+        return !!name && !!email && !!phoneNumber && !!position && person !== '' && !!checkbox;
     };
 
     React.useEffect(() => {
@@ -206,7 +207,12 @@ export const Test = () => {
                                                 </MenuItem>
                                             ))}
                                         </TextField>
-
+                                        <FormControlLabel
+                                            control={
+                                            <Checkbox checked={checkbox} onChange={()=>setCheckbox(!checkbox)} name="checkbox" />
+                                            }
+                                            label={<Typography gutterBottom variant='caption'>Принимаю <Link variant="caption" href="/info/privacy">политику конфиденциальности</Link></Typography>}
+                                        />
                                     </Stack>
                                 </form>
                             </Paper>
