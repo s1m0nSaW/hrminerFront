@@ -8,7 +8,7 @@ import { setData, selectIsAuth, logout } from '../redux/slices/auth.js';
 import axios from '../axios.js';
 import { useForm } from 'react-hook-form';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Row from '../components/Row.jsx';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -19,7 +19,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const Account = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [applicants, setApplicants] = React.useState();
     const [open, setOpen] = React.useState(false);
@@ -133,7 +132,7 @@ export const Account = () => {
                                     alignItems="flex-end"
                                     spacing={2}
                                 >
-                                    <CopyToClipboard text={`http://localhost:3000/test/${user._id}`}>
+                                    <CopyToClipboard text={`https://hrminer/test/${user._id}`}>
                                         <Button variant='outlined' size="small" endIcon={<ContentCopyIcon fontSize="small" />}>
                                             Копировать ссылку
                                         </Button>
