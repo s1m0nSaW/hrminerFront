@@ -95,7 +95,7 @@ export default function Row({applicant, handleDeleteRow, createPayment}) {
                 <TableCell align="right">{applicant.email}</TableCell>
                 <TableCell align="right">{applicant.phone}</TableCell>
                 <TableCell align="right">{applicant.position}</TableCell>
-                <TableCell align="right"><Button onClock={()=>createPayment(applicant._id, applicant.name, applicant.phone, applicant.email, applicant.mbtiType)} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
+                <TableCell align="right"><Button onClick={()=>createPayment(applicant._id, applicant.name, applicant.phone, applicant.email, applicant.mbtiType)} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
                 <TableCell align="right"><IconButton onClick={()=>handleDeleteRow(applicant._id)} color="error"><DeleteOutlineIcon/></IconButton></TableCell>
             </TableRow>
             <TableRow>
