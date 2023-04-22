@@ -82,6 +82,17 @@ export const Account = () => {
         }
     }
 
+    const createPayment = async (id, name, phone, email, mbtiType) => {
+        if (window.confirm('Скачать документ PDF за 99 рублей?')) {
+            const fields = {
+                id, name, phone, email, mbtiType
+            }
+            await axios.post(`/create-payment`,fields).catch((err) => {
+                console.log(err)
+            });
+        }
+    }
+
     React.useEffect(() => {
         const results = async () => {
             await axios.get('/applicants').then((data) => {
@@ -132,7 +143,7 @@ export const Account = () => {
                                     alignItems="flex-end"
                                     spacing={2}
                                 >
-                                    <CopyToClipboard text={`https://hrminer/test/${user._id}`}>
+                                    <CopyToClipboard text={`https://hrminer.ru/test/${user._id}`}>
                                         <Button variant='outlined' size="small" endIcon={<ContentCopyIcon fontSize="small" />}>
                                             Копировать ссылку
                                         </Button>
@@ -160,7 +171,7 @@ export const Account = () => {
                             </TableHead>
                             <TableBody>
                                 {applicants?.map((applicant, index) => (
-                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant} />
+                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant} createPayment={createPayment}/>
                                 ))}
                                 {applicants?.length === 0 && <><TableRow><TableCell /><TableCell><Typography>У вас ещё нет анкет</Typography></TableCell></TableRow></>}
                             </TableBody>

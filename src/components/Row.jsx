@@ -14,7 +14,7 @@ import { ISTJ, ISFJ, INFJ, INTJ, ISTP, ISFP, INFP, INTP, ESTP, ESFP, ENFP, ENTP,
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
-export default function Row({applicant, handleDeleteRow}) {
+export default function Row({applicant, handleDeleteRow, createPayment}) {
     const [open, setOpen] = React.useState(false);
 
     const getDescription = (type) => {
@@ -95,7 +95,7 @@ export default function Row({applicant, handleDeleteRow}) {
                 <TableCell align="right">{applicant.email}</TableCell>
                 <TableCell align="right">{applicant.phone}</TableCell>
                 <TableCell align="right">{applicant.position}</TableCell>
-                <TableCell align="right"><Button color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
+                <TableCell align="right"><Button onClock={()=>createPayment(applicant._id, applicant.name, applicant.phone, applicant.email, applicant.mbtiType)} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
                 <TableCell align="right"><IconButton onClick={()=>handleDeleteRow(applicant._id)} color="error"><DeleteOutlineIcon/></IconButton></TableCell>
             </TableRow>
             <TableRow>
