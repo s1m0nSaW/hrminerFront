@@ -87,7 +87,7 @@ export const Account = () => {
             const fields = {
                 id, name, phone, email, mbtiType
             }
-            await axios.post(`/create-payment`,fields).catch((err) => {
+            await axios.post(`/create-payment`,fields).then((data) => console.log(data)).catch((err) => {
                 console.log(err)
             });
         }
