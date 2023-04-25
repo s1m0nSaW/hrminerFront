@@ -89,7 +89,7 @@ export const Account = () => {
                 id, name, phone, email, mbtiType
             }
             await axios.post(`/create-payment`,fields).then((data) => {
-                navigate(data.data.confirmation.confirmation_url)
+                window.location.href = data.data.confirmation.confirmation_url
             }).catch((err) => {
                 console.log(err)
             });
