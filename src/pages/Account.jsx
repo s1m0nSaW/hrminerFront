@@ -8,7 +8,7 @@ import { setData, selectIsAuth, logout } from '../redux/slices/auth.js';
 import axios from '../axios.js';
 import { useForm } from 'react-hook-form';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Row from '../components/Row.jsx';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -19,6 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const Account = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [applicants, setApplicants] = React.useState();
     const [open, setOpen] = React.useState(false);
@@ -87,7 +88,9 @@ export const Account = () => {
             const fields = {
                 id, name, phone, email, mbtiType
             }
-            await axios.post(`/create-payment`,fields).then((data) => console.log(data)).catch((err) => {
+            await axios.post(`/create-payment`,fields).then((data) => {
+                navigate(data.data.confirmation.confirmation_url)
+            }).catch((err) => {
                 console.log(err)
             });
         }
