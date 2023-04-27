@@ -8,7 +8,7 @@ import { setData, selectIsAuth, logout } from '../redux/slices/auth.js';
 import axios from '../axios.js';
 import { useForm } from 'react-hook-form';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Row from '../components/Row.jsx';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -19,7 +19,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const Account = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [applicants, setApplicants] = React.useState();
     const [open, setOpen] = React.useState(false);
@@ -86,10 +85,15 @@ export const Account = () => {
     const createPayment = async (id, name, phone, email, mbtiType) => {
         if (window.confirm('Скачать документ PDF за 99 рублей?')) {
             const fields = {
-                id, name, phone, email, mbtiType
+                id,
+                employerId: user._id,
             }
             await axios.post(`/create-payment`,fields).then((data) => {
-                window.location.href = data.data.confirmation.confirmation_url
+                if(data.data.confirmation.confirmation_url){
+                    window.location.href = data.data.confirmation.confirmation_url
+                } else { 
+                    return alert("Непредвиденная проблема с оплатой") 
+                }
             }).catch((err) => {
                 console.log(err)
             });
@@ -125,6 +129,8 @@ export const Account = () => {
                                 <Typography variant='h6' gutterBottom>Информация:</Typography>
                                 <Typography>Компания: <b>{user.name}</b></Typography>
                                 <Typography>Email: <b>{user.email}</b></Typography>
+                                <Typography>Деятельность: <b>{user.activity}</b></Typography>\
+                                <Typography>Количество работников: <b>{user.number}</b></Typography>
                                 <Typography>Позиций: <b>{user.positions.length}</b></Typography>
                                 {applicants ? <Typography>Результатов: <b>{applicants.length}</b></Typography> :
                                     <Typography>Результатов: <b>0</b></Typography>}
