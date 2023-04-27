@@ -82,6 +82,13 @@ export const Account = () => {
         }
     }
 
+    const updateApplicant = async ( paymentId, status, id ) => {
+        const fields = {
+            paymentId, status
+        }
+        await axios.patch(`/applicants/${id}`, fields).catch((err) => console.log(err))
+    }
+
     const createPayment = async (id, name, phone, email, mbtiType) => {
         if (window.confirm('Скачать документ PDF за 99 рублей?')) {
             const fields = {
@@ -90,6 +97,7 @@ export const Account = () => {
             }
             await axios.post(`/create-payment`,fields).then((data) => {
                 if(data.data.confirmation.confirmation_url){
+                    updateApplicant( data.data.id, data.data.status, id )
                     window.location.href = data.data.confirmation.confirmation_url
                 } else { 
                     return alert("Непредвиденная проблема с оплатой") 
