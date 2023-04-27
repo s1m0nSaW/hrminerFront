@@ -98,7 +98,7 @@ export const Account = () => {
             await axios.post(`/create-payment`,fields).then((data) => {
                 if(data.data.confirmation.confirmation_url){
                     updateApplicant( data.data.id, data.data.status, id )
-                    window.location.href = data.data.confirmation.confirmation_url
+                    //window.location.href = data.data.confirmation.confirmation_url
                 } else { 
                     return alert("Непредвиденная проблема с оплатой") 
                 }
