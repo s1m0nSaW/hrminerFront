@@ -20,8 +20,6 @@ export const Registration = () => {
     defaultValues: {
       fullName: '',
       email: '',
-      activity: '',
-      number: '',
       password: '',
       checkbox: false,
     },

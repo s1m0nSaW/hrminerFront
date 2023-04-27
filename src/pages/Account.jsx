@@ -129,7 +129,7 @@ export const Account = () => {
                                 <Typography variant='h6' gutterBottom>Информация:</Typography>
                                 <Typography>Компания: <b>{user.name}</b></Typography>
                                 <Typography>Email: <b>{user.email}</b></Typography>
-                                <Typography>Деятельность: <b>{user.activity}</b></Typography>\
+                                <Typography>Деятельность: <b>{user.activity}</b></Typography>
                                 <Typography>Количество работников: <b>{user.number}</b></Typography>
                                 <Typography>Позиций: <b>{user.positions.length}</b></Typography>
                                 {applicants ? <Typography>Результатов: <b>{applicants.length}</b></Typography> :
