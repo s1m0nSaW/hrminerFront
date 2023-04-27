@@ -20,6 +20,8 @@ export const Registration = () => {
     defaultValues: {
       fullName: '',
       email: '',
+      activity: '',
+      number: '',
       password: '',
       checkbox: false,
     },
@@ -87,6 +89,7 @@ export const Registration = () => {
             fullWidth
             sx={{ marginBottom: '20px' }}
             labelId="activity-label"
+            defaultValue=''
             input={<OutlinedInput label="Деятельность" />}
             {...register('activity', { required: "Выберите деятельность" })}
           >
@@ -107,6 +110,7 @@ export const Registration = () => {
             fullWidth
             sx={{ marginBottom: '20px' }}
             labelId="number-label"
+            defaultValue=''
             input={<OutlinedInput label="Количество работников" />}
             {...register('number', { required: "Выберите из списка" })}
           >
