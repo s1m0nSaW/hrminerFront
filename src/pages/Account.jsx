@@ -82,11 +82,12 @@ export const Account = () => {
         }
     }
 
-    const updateApplicant = async ( paymentId, status, id ) => {
+    const updateApplicant = async ( paymentId, status, id, confirmation_url ) => {
         const fields = {
             paymentId, status
         }
         await axios.patch(`/applicants/${id}`, fields).catch((err) => console.log(err))
+        window.location.href = confirmation_url
     }
 
     const createPayment = async (id, name, phone, email, mbtiType) => {
@@ -97,7 +98,7 @@ export const Account = () => {
             }
             await axios.post(`/create-payment`,fields).then((data) => {
                 if(data.data.confirmation.confirmation_url){
-                    updateApplicant( data.data.id, data.data.status, id )
+                    updateApplicant( data.data.id, data.data.status, id, data.data.confirmation.confirmation_url )
                     //window.location.href = data.data.confirmation.confirmation_url
                 } else { 
                     return alert("Непредвиденная проблема с оплатой") 
