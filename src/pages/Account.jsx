@@ -95,7 +95,7 @@ export const Account = () => {
         if (window.confirm('Скачать документ?')) {
             await axios.get('/create-pdf', fields).then((data) => {
                 console.log(data)
-                handleDownload(data.data)
+                handleDownload(data)
             }).catch((err) => {
                 console.log(err)
                 return alert("Непредвиденная ошибка при скачивании")
