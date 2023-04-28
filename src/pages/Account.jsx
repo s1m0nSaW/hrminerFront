@@ -90,7 +90,7 @@ export const Account = () => {
         window.location.href = confirmation_url
     }
 
-    const createPayment = async (id, name, phone, email, mbtiType) => {
+    const createPayment = async (id) => {
         if (window.confirm('Скачать документ PDF за 99 рублей?')) {
             const fields = {
                 id,
@@ -183,6 +183,7 @@ export const Account = () => {
                                     <TableCell align="right">Email</TableCell>
                                     <TableCell align="right">Номер телефона</TableCell>
                                     <TableCell align="right">Позиция</TableCell>
+                                    <TableCell align="right">Статус</TableCell>
                                     <TableCell align="right">Скачать</TableCell>
                                     <TableCell align="right">Удалить</TableCell>
                                 </TableRow>

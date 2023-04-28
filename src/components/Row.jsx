@@ -95,7 +95,12 @@ export default function Row({applicant, handleDeleteRow, createPayment}) {
                 <TableCell align="right">{applicant.email}</TableCell>
                 <TableCell align="right">{applicant.phone}</TableCell>
                 <TableCell align="right">{applicant.position}</TableCell>
-                <TableCell align="right"><Button onClick={()=>createPayment(applicant._id, applicant.name, applicant.phone, applicant.email, applicant.mbtiType)} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon/>}><b>99 ₽</b></Button></TableCell>
+                <TableCell align="right">{applicant.status}</TableCell>
+                <TableCell align="right">
+                    {applicant.status === "succeeded" ? 
+                    <Button onClick={() => console.log('download')} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon />}><b>Скачать</b></Button>
+                    :<Button onClick={() => createPayment(applicant._id)} color="primary" size='small' variant="outlined"><b>Оплатить 99 ₽</b></Button>}
+                </TableCell>
                 <TableCell align="right"><IconButton onClick={()=>handleDeleteRow(applicant._id)} color="error"><DeleteOutlineIcon/></IconButton></TableCell>
             </TableRow>
             <TableRow>
