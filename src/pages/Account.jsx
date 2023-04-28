@@ -82,6 +82,16 @@ export const Account = () => {
         }
     }
 
+    const getDocument = async ( name, phone, email, mbtiType ) => {
+        const fields = {
+            name, phone, email, mbtiType
+        }
+        await axios.get('/create-pdf', fields).catch((err) => {
+            console.log(err)
+            return alert("Непредвиденная ошибка при скачивании")
+        })
+    }
+
     const updateApplicant = async ( paymentId, status, id, confirmation_url ) => {
         const fields = {
             paymentId, status
@@ -101,7 +111,7 @@ export const Account = () => {
                     updateApplicant( data.data.id, data.data.status, id, data.data.confirmation.confirmation_url )
                     //window.location.href = data.data.confirmation.confirmation_url
                 } else { 
-                    return alert("Непредвиденная проблема с оплатой") 
+                    return alert("Непредвиденная ошибка с оплатой") 
                 }
             }).catch((err) => {
                 console.log(err)
@@ -190,7 +200,7 @@ export const Account = () => {
                             </TableHead>
                             <TableBody>
                                 {applicants?.map((applicant, index) => (
-                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant} createPayment={createPayment}/>
+                                    <Row key={index} applicant={applicant} handleDeleteRow={deleteApplicant} createPayment={createPayment} getDocument={getDocument}/>
                                 ))}
                                 {applicants?.length === 0 && <><TableRow><TableCell /><TableCell><Typography>У вас ещё нет анкет</Typography></TableCell></TableRow></>}
                             </TableBody>

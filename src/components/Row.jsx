@@ -14,7 +14,7 @@ import { ISTJ, ISFJ, INFJ, INTJ, ISTP, ISFP, INFP, INTP, ESTP, ESFP, ENFP, ENTP,
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
-export default function Row({applicant, handleDeleteRow, createPayment}) {
+export default function Row({applicant, handleDeleteRow, createPayment, getDocument}) {
     const [open, setOpen] = React.useState(false);
 
     const getStatus = (status) => {
@@ -122,10 +122,8 @@ export default function Row({applicant, handleDeleteRow, createPayment}) {
                 {getStatus(applicant.status)}
                 <TableCell align="right">
                     {applicant.status === "succeeded" ? 
-                    <Button onClick={() => console.log('download')} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon />}><b>Скачать</b></Button>
-                    :<>{applicant.status === "pending" ? 
-                    <Button disabled color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon />}><b>Скачать</b></Button>
-                    :<Button onClick={() => createPayment(applicant._id)} color="primary" size='small' variant="outlined"><b>Оплатить 99 ₽</b></Button>}</>}
+                    <Button onClick={() => getDocument( applicant.name, applicant.phone, applicant.email, applicant.mbtiType )} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon />}><b>Скачать</b></Button>
+                    :<Button onClick={() => createPayment(applicant._id)} color="primary" size='small' variant="outlined"><b>Оплатить 99 ₽</b></Button>}
                 </TableCell>
                 <TableCell align="right"><IconButton onClick={()=>handleDeleteRow(applicant._id)} color="error"><DeleteOutlineIcon/></IconButton></TableCell>
             </TableRow>
