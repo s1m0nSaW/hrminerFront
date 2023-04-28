@@ -17,6 +17,30 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 export default function Row({applicant, handleDeleteRow, createPayment}) {
     const [open, setOpen] = React.useState(false);
 
+    const getStatus = (status) => {
+        let string
+        switch (status) {
+            case 'succeeded':
+                string = "Оплачен"
+                break;
+            case 'pending':
+                string = "В ожидании"
+                break;
+            case 'canceled':
+                string = "Отменён"
+                break;
+            case 'none':
+                string = "Не оплачен"
+                break;
+            default:
+                string = "Не оплачен"
+                break;
+        }
+        return (
+            <TableCell align="right">{string}</TableCell>
+        )
+    }
+
     const getDescription = (type) => {
         let str 
         switch (type) {
@@ -95,7 +119,7 @@ export default function Row({applicant, handleDeleteRow, createPayment}) {
                 <TableCell align="right">{applicant.email}</TableCell>
                 <TableCell align="right">{applicant.phone}</TableCell>
                 <TableCell align="right">{applicant.position}</TableCell>
-                <TableCell align="right">{applicant.status}</TableCell>
+                {getStatus(applicant.status)}
                 <TableCell align="right">
                     {applicant.status === "succeeded" ? 
                     <Button onClick={() => console.log('download')} color="primary" size='small' variant="outlined" endIcon={<FileDownloadIcon />}><b>Скачать</b></Button>

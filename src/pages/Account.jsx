@@ -184,7 +184,7 @@ export const Account = () => {
                                     <TableCell align="right">Номер телефона</TableCell>
                                     <TableCell align="right">Позиция</TableCell>
                                     <TableCell align="right">Статус</TableCell>
-                                    <TableCell align="right">Скачать</TableCell>
+                                    <TableCell align="right">Оплатить/Скачать</TableCell>
                                     <TableCell align="right">Удалить</TableCell>
                                 </TableRow>
                             </TableHead>
