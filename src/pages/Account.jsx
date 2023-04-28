@@ -82,6 +82,12 @@ export const Account = () => {
         }
     }
 
+    function handleDownload (data) {
+        const blob = new Blob([data],{type: 'application/pdf'});
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+    }
+
     const getDocument = async (name, phone, email, mbtiType) => {
         const fields = {
             name, phone, email, mbtiType
@@ -89,6 +95,7 @@ export const Account = () => {
         if (window.confirm('Скачать документ?')) {
             await axios.get('/create-pdf', fields).then((data) => {
                 console.log(data)
+                handleDownload(data.data)
             }).catch((err) => {
                 console.log(err)
                 return alert("Непредвиденная ошибка при скачивании")
@@ -105,7 +112,7 @@ export const Account = () => {
     }
 
     const createPayment = async (id) => {
-        if (window.confirm('Скачать документ PDF за 99 рублей?')) {
+        if (window.confirm('Оплатить 99 рублей за документ PDF?')) {
             const fields = {
                 id,
                 employerId: user._id,
