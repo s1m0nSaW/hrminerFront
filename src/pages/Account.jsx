@@ -92,8 +92,10 @@ export const Account = () => {
         const fields = {
             name, phone, email, mbtiType
         }
+        
         if (window.confirm('Скачать документ?')) {
             await axios.get('/create-pdf', fields).then((data) => {
+                console.log(fields)
                 console.log(data)
                 handleDownload(data.data)
             }).catch((err) => {
