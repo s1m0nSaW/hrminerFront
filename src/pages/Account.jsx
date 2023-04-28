@@ -93,7 +93,7 @@ export const Account = () => {
             name, phone, email, mbtiType
         }
         if (window.confirm('Скачать документ?')) {
-            await axios.get('/create-pdf', fields).then(res => res.blob()).then((data) => {
+            await axios.get('/create-pdf', fields).then((data) => {
                 console.log(data)
                 handleDownload(data.data)
             }).catch((err) => {
