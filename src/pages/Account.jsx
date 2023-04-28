@@ -83,7 +83,7 @@ export const Account = () => {
     }
 
     function handleDownload (data) {
-        const blob = new Blob([data],{type: 'application/pdf'});
+        const blob = new Blob([data],{type: 'application/pdf',});
         const url = URL.createObjectURL(blob);
         window.open(url);
     }
@@ -94,9 +94,7 @@ export const Account = () => {
         }
         
         if (window.confirm('Скачать документ?')) {
-            await axios.get('/create-pdf', fields).then((data) => {
-                console.log(fields)
-                console.log(data)
+            await axios.post('/create-pdf', fields,{ responseType: 'arraybuffer'}).then((data) => {
                 handleDownload(data.data)
             }).catch((err) => {
                 console.log(err)
