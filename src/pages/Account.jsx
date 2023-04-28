@@ -82,14 +82,16 @@ export const Account = () => {
         }
     }
 
-    const getDocument = async ( name, phone, email, mbtiType ) => {
+    const getDocument = async (name, phone, email, mbtiType) => {
         const fields = {
             name, phone, email, mbtiType
         }
-        await axios.get('/create-pdf', fields).catch((err) => {
-            console.log(err)
-            return alert("Непредвиденная ошибка при скачивании")
-        })
+        if (window.confirm('Скачать документ?')) {
+            await axios.get('/create-pdf', fields).catch((err) => {
+                console.log(err)
+                return alert("Непредвиденная ошибка при скачивании")
+            })
+        }
     }
 
     const updateApplicant = async ( paymentId, status, id, confirmation_url ) => {
