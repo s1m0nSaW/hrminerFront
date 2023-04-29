@@ -24,7 +24,7 @@ export default function Row({applicant, handleDeleteRow, createPayment, getDocum
                 string = "Оплачен"
                 break;
             case 'pending':
-                string = "В ожидании"
+                string = "Не оплачен"
                 break;
             case 'canceled':
                 string = "Отменён"

@@ -26,7 +26,7 @@ export const Header = () => {
       <Container maxWidth="lg">
         <div className={styles.inner}>
           <Link className={styles.logo} to="/">
-            <Typography variant="h5" sx={{ color: '#ff6700'}}><b>HR Майнер</b></Typography>
+            <Typography variant="h5" sx={{ color: '#3a6ea5'}}><b>HR Майнер</b></Typography>
           </Link>
           <div className={styles.buttons}>
             {isAuth ? (

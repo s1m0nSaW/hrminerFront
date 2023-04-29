@@ -25,6 +25,10 @@ export const theme = createTheme({
       fontStyle:'italic',
       fontFamily: 'Bona Nova',
     },
+    h5: {
+      fontWeight: 400,
+      fontFamily: 'Bona Nova',
+    },
     h6: {
       fontWeight: 700,
       fontFamily: 'Bona Nova',

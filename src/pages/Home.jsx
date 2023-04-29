@@ -74,7 +74,7 @@ export const Home = ( isAuth ) => {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <Paper elevation={4} sx={{ backgroundColor: '#3a6ea5' }}>
+          <Paper elevation={4} sx={{ backgroundColor: '#ff6700' }}>
             <Box py={3} px={4}>
               <PublicIcon sx={{ fontSize: 56, color:'white' }} />
               <Typography color='white' variant="h6" component="p" gutterBottom>
@@ -176,7 +176,7 @@ export const Home = ( isAuth ) => {
       <Grid item xs={12} md={10}>
         <Paper elevation={0} sx={{ backgroundColor: 'inherit' }} >
           <Box py={3} px={4}>
-            <Typography gutterBottom variant="h4" align="center" sx={{ color: '#004e98' }}>
+            <Typography variant="h4" align="center" sx={{ color: '#004e98' }}>
               О нас<br/><br/>
             </Typography>
             <Typography variant="body1" component="h3" gutterBottom sx={{ color: '#004e98' }}>
@@ -220,7 +220,7 @@ export const Home = ( isAuth ) => {
                 Как начать?
               </Typography>
               <Typography variant="body1" gutterBottom sx={{ color: 'white' }}>
-              1. Зарегистрироваться: указать название компании, адрес электронной почты и придумать пароль.<br />
+              1. Зарегистрироваться: указать информацию о компании и придумать пароль.<br />
               2. В личном кабинете создать позицию, должность работника или соискателя,
                 который будет проходить тест.<br />
                 3. Скопировать ссылку и отправить соискателю или работнику, он должен заполнить информацию: ФИО, Email, номер телефона, выбрать из списка
