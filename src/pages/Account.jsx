@@ -112,7 +112,7 @@ export const Account = () => {
     }
 
     const createPayment = async (id) => {
-        if (window.confirm('Оплатить 99 рублей за документ PDF?')) {
+        if (window.confirm('Оплатить 199 рублей за документ PDF?')) {
             const fields = {
                 id,
                 employerId: user._id,

@@ -10,33 +10,38 @@ export const theme = createTheme({
   typography: {
     button: {
       textTransform: "none",
-      fontWeight: 400,
+      fontWeight: 300,
     },
     h4: {
-      fontWeight: 700,
-      fontFamily: 'Bona Nova',
+      fontWeight: 500,
+      fontFamily: 'Commissioner',
     },
     body1: {
-      fontWeight: 400,
-      fontFamily: 'Bona Nova',
+      fontWeight: 300,
+      fontFamily: 'Commissioner'
+    },
+    body3: {
+      fontWeight: 300,
+      fontFamily: 'Commissioner',
+      color: 'white'
     },
     h61: {
-      fontWeight: 400,
+      fontWeight:300,
       fontStyle:'italic',
-      fontFamily: 'Bona Nova',
+      fontFamily: 'Commissioner',
     },
     h5: {
-      fontWeight: 400,
-      fontFamily: 'Bona Nova',
+      fontWeight: 300,
+      fontFamily: 'Commissioner',
     },
     h6: {
-      fontWeight: 700,
-      fontFamily: 'Bona Nova',
+      fontWeight: 500,
+      fontFamily: 'Commissioner',
     },
   },
   components:{
     paper: {
-      backgroundColor: "#F7F7F7",
+      backgroundColor: "#132d46",
       border: "1px solid #E5E5E5",
     }
   },

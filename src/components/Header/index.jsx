@@ -26,7 +26,7 @@ export const Header = () => {
       <Container maxWidth="lg">
         <div className={styles.inner}>
           <Link className={styles.logo} to="/">
-            <Typography variant="h5" sx={{ color: '#3a6ea5'}}><b>HR Майнер</b></Typography>
+            <Typography variant="h5" sx={{ color: '#01c38d'}}>HR Майнер</Typography>
           </Link>
           <div className={styles.buttons}>
             {isAuth ? (
@@ -34,7 +34,7 @@ export const Header = () => {
                 <Button onClick={()=>navigate(`/lk/${user._id}`)}>
                   Личный кабинет
                 </Button>
-                <Button onClick={onClickLogout} color="error">
+                <Button onClick={onClickLogout}>
                   Выйти
                 </Button>
               </>

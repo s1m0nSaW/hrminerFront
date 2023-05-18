@@ -1,4 +1,5 @@
 import axios from "axios";
+//baseURL: '/api', нужно поменять перед деплоем
 
 const instance = axios.create({
     baseURL: '/api',

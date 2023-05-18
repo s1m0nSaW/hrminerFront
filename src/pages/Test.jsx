@@ -269,7 +269,6 @@ export const Test = () => {
                                     disabled={!isFormValid()}
                                     onClick={() => sendToEmployer()}
                                     variant="contained"
-                                    color="primary"
                                 >
                                     Отправить результат
                                 </Button>

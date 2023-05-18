@@ -12,6 +12,8 @@ import { Home, Registration, Login, Account, Test } from "./pages";
 import { fetchAuthMe, selectIsAuth } from "./redux/slices/auth";
 import { Typography, Stack, Link, Snackbar, Button } from '@mui/material';
 
+import styles from './index.scss';
+
 function App() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -54,13 +56,15 @@ function App() {
           <Route path="/info/offer" element={<Offer />} />
         </Routes>
       </Container>
-      <footer>
-        <Stack sx={{ width: '100%', marginTop: '30px' }} direction={{ xs: 'column', sm: 'row' }} alignItems={'center'} justifyContent={'center'} spacing={2}>
-          <Link variant="body2" href="/info/privacy">Политика конфиденциальности</Link>
-          <Link variant="body2" href="/info/offer">Оферта</Link>
-          <Link variant="body2" href="/info/terms">Условия использования сайта</Link>
+      <footer className={styles.footer}>
+        <Stack sx={{ backgroundColor: '#191E29', marginTop: '30px', paddingTop: '15px'}}>
+        <Stack sx={{ width: '100%' }} direction={{ xs: 'column', sm: 'row' }} alignItems={'center'} justifyContent={'center'} spacing={2}>
+          <Link sx={{ color: '#01c38d'}} variant="body2" href="/info/privacy">Политика конфиденциальности</Link>
+          <Link sx={{ color: '#01c38d'}} variant="body2" href="/info/offer">Оферта</Link>
+          <Link sx={{ color: '#01c38d'}} variant="body2" href="/info/terms">Условия использования сайта</Link>
         </Stack>
-        <Typography align='center' gutterBottom>© 2023 HR Майнер - все права защищены.</Typography>
+          <Typography sx={{marginTop: '15px'}} variant='caption' color='white' align='center' gutterBottom>© 2023 HR Майнер - все права защищены.</Typography>
+        </Stack>
       </footer>
       <Snackbar
         anchorOrigin={{vertical: 'bottom',
